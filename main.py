@@ -2,9 +2,11 @@ import random
 import choice_parser
 import os
 import platform
+import time
 
 while True:
-
+    
+    #Verify the OS and executes the especific command to clear to terminal 
     if platform.system() == 'Linux':
         os.system('clear')
     elif platform.system() == 'Windows':
@@ -20,7 +22,7 @@ while True:
     machine_choice = random.randrange(1, 3)
     player_choice = None
 
-    print("Player 1 is playing: ")
+    print("\nPlayer 1 is playing... ")
     
     while True:
         try:
@@ -32,16 +34,22 @@ while True:
         except:
             print("PLEASE USE ONLY THE MOVE KEYS")
     
+    #Evaluate the moves 
     result = choice_parser.Choice_Parser(player_choice, machine_choice)
-    print("Machine move:", machine_choice)
+
+    print("\nThe machine is playing...\n3")
+    time.sleep(3)
+    print("\nMachine move:\n\n", machine_choice)
+    
     
     if result == 1:
-        print("PLAYER 1 AS WON!")
+        print("\n\nPLAYER 1 AS WON!\n\n")
     elif result == 2:
-        print("PLAYER 2 AS WON!")
+        print("\n\nPLAYER 2 AS WON!\n\n")
     elif result == 3:
-        print("IT'S A TIE!")
+        print("\n\nIT'S A TIE!\n\n")
         
+    #break the main loop if the player wants to stop
     play_again = input("Want to play again? (y/n)")
     if play_again == 'n':
         break
